@@ -29,11 +29,18 @@ try() {
     [[ $1 == -b ]] && { BG=1; shift; }
     [[ $1 == -- ]] && {       shift; }
 
+    if [[ -n $LOG_STEPS ]];
+    then
+        OUTPUT="$LOG_STEPS"
+    else
+        OUTPUT="/dev/null"
+    fi
+
     # Run the command.
     if [[ -z $BG ]]; then
-        "$@" >/dev/null 2>&1
+        "$@" >$OUTPUT 2>&1
     else
-        "$@" >/dev/null 2>&1 &
+        "$@" >$OUTPUT 2>&1 &
     fi
 
     # Check if command failed and update $STEP_OK if so.
