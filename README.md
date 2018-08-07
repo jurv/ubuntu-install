@@ -11,6 +11,7 @@ Currently the installation script:
 * Install Google Chrome
 * Install Atom.io
 * Install Git
+* Install Gimp
 * Customize Gnome by:
   * setting a desktop, lock screen and login page wallpaper (the same image)
   * setting a dock icon size

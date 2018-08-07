@@ -13,7 +13,7 @@ LOG_STEPS="install_log"
 WALLPAPER_URL="https://nyxrisingcom.files.wordpress.com/2016/12/mpcc4-wallpapers-451016512-1920x1080.jpg"
 TERMINAL_COLOR_PALETTE="['rgb(0,0,0)', 'rgb(204,0,0)', 'rgb(78,154,6)', 'rgb(196,160,0)', 'rgb(52,101,164)', 'rgb(117,80,123)', 'rgb(6,152,154)', 'rgb(211,215,207)', 'rgb(85,87,83)', 'rgb(239,41,41)', 'rgb(138,226,52)', 'rgb(252,233,79)', 'rgb(114,159,207)', 'rgb(173,127,168)', 'rgb(52,226,226)', 'rgb(238,238,236)']"
 DOCK_ICON_SIZE=28
-DOCK_ITEMS="['google-chrome.desktop', 'org.gnome.Nautilus.desktop', 'org.gnome.Software.desktop', 'org.gnome.Terminal.desktop', 'gedit.desktop', 'atom.desktop']"
+DOCK_ITEMS="['google-chrome.desktop', 'org.gnome.Nautilus.desktop', 'org.gnome.Software.desktop', 'gimp.desktop', 'org.gnome.Terminal.desktop', 'gedit.desktop', 'atom.desktop']"
 
 ##############
 # SETTING UP #
@@ -25,8 +25,8 @@ cd /tmp
 #########################################
 # INSTALL FROM APT DEFAULT REPOSITORIES #
 #########################################
-step "Installing from apt..."
-try sudo apt-get install git
+step "Installing from disto default apt repositories..."
+try sudo apt-get install -y git gimp
 next
 
 ##################
@@ -91,7 +91,6 @@ fi
 profile="$(dconf list /org/gnome/terminal/legacy/profiles:/ | sed 's./..')"
 try dconf write /org/gnome/terminal/legacy/profiles:/$profile/use-theme-colors "false"
 try dconf write /org/gnome/terminal/legacy/profiles:/$profile/palette "$TERMINAL_COLOR_PALETTE"
-next
 
 # Dock icon size
 try gsettings set org.gnome.shell.extensions.dash-to-dock dash-max-icon-size $DOCK_ICON_SIZE
