@@ -22,6 +22,12 @@ DOCK_ITEMS="['google-chrome.desktop', 'org.gnome.Nautilus.desktop', 'org.gnome.S
 
 cd /tmp
 
+#########################################
+# INSTALL FROM APT DEFAULT REPOSITORIES #
+#########################################
+step "Installing from apt..."
+try sudo apt-get install git
+next
 
 ##################
 # INSTALL CHROME #
@@ -104,5 +110,7 @@ if [[ $REPLY =~ ^[Yy]$ ]]
 then
     sudo reboot -n
 fi
+
+echo
 
 exit 0
