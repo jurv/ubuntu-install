@@ -7,11 +7,16 @@ then
 fi
 
 LOG_STEPS="install_log"
+WALLPAPER_URL="https://nyxrisingcom.files.wordpress.com/2016/12/mpcc4-wallpapers-451016512-1920x1080.jpg"
+
 . install_functions.sh
 
 cd /tmp
 
-# INSTALL CHROME
+
+##################
+# INSTALL CHROME #
+##################
 step "Installing Google Chrome... "
 CHROME_APT="/etc/apt/sources.list.d/google-chrome.list"
 
@@ -25,3 +30,59 @@ fi
 next
 
 
+###################
+# INSTALL ATOM.IO #
+###################
+step "Installing atom.io... "
+try wget -O atomio.deb https://atom.io/download/deb
+try sudo dpkg -i atomio.deb
+try sudo apt-get install -f
+next
+
+
+###############
+# GNOME THEME #
+###############
+step "Set up custom theme... "
+HOMEDIR=$( getent passwd "$USER" | cut -d: -f6 )
+
+# Downloading Wallpaper
+try wget -O wallpaper.jpg $WALLPAPER_URL
+try cp wallpaper.jpg $HOMEDIR/Images/
+
+
+# Background
+try gsettings set org.gnome.desktop.background  picture-uri file://$HOMEDIR/Images/wallpaper.jpg
+
+# Lock screen background
+try gsettings set org.gnome.desktop.screensaver picture-uri file://$HOMEDIR/Images/wallpaper.jpg
+
+# Login screen background
+if [ ! -f /etc/alternatives/gdm3.css.backup ]
+then
+	try sudo cp wallpaper.jpg /usr/share/backgrounds/
+	try sudo cp /etc/alternatives/gdm3.css /etc/alternatives/gdm3.css.backup
+	try sudo sh -c 'echo "#lockDialogGroup {background: #000000 url(file:///usr/share/backgrounds/wallpaper.jpg);background-repeat: no-repeat;background-size: cover;background-position: center; }" >> /etc/alternatives/gdm3.css'
+fi
+
+# Dock icon size
+try gsettings set org.gnome.shell.extensions.dash-to-dock dash-max-icon-size 28
+
+# Terminal colors (stop using system colors and use Dark Tango theme)
+profile="$(dconf list /org/gnome/terminal/legacy/profiles:/ | sed 's./..')"
+try dconf write /org/gnome/terminal/legacy/profiles:/$profile/use-theme-colors "false"
+try dconf write /org/gnome/terminal/legacy/profiles:/$profile/palette "['rgb(0,0,0)', 'rgb(204,0,0)', 'rgb(78,154,6)', 'rgb(196,160,0)', 'rgb(52,101,164)', 'rgb(117,80,123)', 'rgb(6,152,154)', 'rgb(211,215,207)', 'rgb(85,87,83)', 'rgb(239,41,41)', 'rgb(138,226,52)', 'rgb(252,233,79)', 'rgb(114,159,207)', 'rgb(173,127,168)', 'rgb(52,226,226)', 'rgb(238,238,236)']"
+next
+
+
+###########
+# EXITING #
+###########
+echo -e "Done !\n"
+read -p "Reboot now? " -n 1 -r
+if [[ $REPLY =~ ^[Yy]$ ]]
+then
+    sudo reboot -n
+fi
+
+exit 0
