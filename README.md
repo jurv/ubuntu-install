@@ -12,7 +12,7 @@ It contains two main scripts:
 It was adapted for Ubuntu from [the RedHat/CentOS code from John Kugelman on StackOverflow](https://stackoverflow.com/a/5196220).
 * `install.sh`: the actual installation script, that sets up the installation and call each module installation script.
 
-# MODULES
+## MODULES
 
 The modules are individual actions, available in a single bash script. Each module must have its own folder in the `modules` directory, and each module folder should contain at least a `install.sh` script that will be called by the main installer.
 
@@ -25,7 +25,7 @@ Modules currently available are:
 * Customize Gnome by:
   * setting a desktop, lock screen and login page wallpaper (the same image)
   * setting a dock icon size
-  * setting dock items ("favourites")
+  * setting dock items ("favourites"), including link to Gmail
   * setting terminal colors
 
 All the values used for customization can be changed through variables defined in the script.

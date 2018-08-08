@@ -1,0 +1,8 @@
+[Desktop Entry]
+Comment=Open Gmail
+Name=Gmail
+Terminal=false
+Exec=/opt/google/chrome/chrome https://www.gmail.com
+Type=Application
+Icon=gmail.png
+NoDisplay=false
