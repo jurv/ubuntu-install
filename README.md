@@ -12,6 +12,10 @@ It contains two main scripts:
 It was adapted for Ubuntu from [the RedHat/CentOS code from John Kugelman on StackOverflow](https://stackoverflow.com/a/5196220).
 * `install.sh`: the actual installation script, that sets up the installation and call each module installation script.
 
+Here is what the desktop looks like after the install:
+
+![Desktop after install](docs/desktop.png)
+
 ## MODULES
 
 The modules are individual actions, available in a single bash script. Each module must have its own folder in the `modules` directory, and each module folder should contain at least a `install.sh` script that will be called by the main installer.
