@@ -13,9 +13,11 @@ step "Set up custom theme... "
 HOMEDIR=$( getent passwd "$USER" | cut -d: -f6 )
 
 # Downloading Wallpaper
-try wget -O wallpaper.jpg $WALLPAPER_URL
-try cp wallpaper.jpg $HOMEDIR/Images/
-
+if [ ! -f $HOMEDIR/Images/wallpaper.jpg ]
+then
+  try wget -O wallpaper.jpg $WALLPAPER_URL
+  try cp wallpaper.jpg $HOMEDIR/Images/
+fi
 
 # Background
 try gsettings set org.gnome.desktop.background  picture-uri file://$HOMEDIR/Images/wallpaper.jpg
