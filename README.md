@@ -26,6 +26,8 @@ Modules currently available are:
 * Atom.io
 * Git
 * Gimp
+* python3 and its tools (pip3, etc...)
+* Linux tools (net-tools)
 * Customize Gnome by:
   * setting a desktop, lock screen and login page wallpaper (the same image)
   * setting a dock icon size
