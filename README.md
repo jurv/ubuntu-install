@@ -28,10 +28,11 @@ Modules currently available are:
 * Gimp
 * python3 and its tools (pip3, etc...)
 * Linux tools (net-tools)
+* Spotify
 * Customize Gnome by:
   * setting a desktop, lock screen and login page wallpaper (the same image)
   * setting a dock icon size
-  * setting dock items ("favourites"), including link to Gmail
+  * setting dock items ("favourites"), including link to Gmail website and Spotify app
   * setting terminal colors
 
 All the values used for customization can be changed through variables defined in the script.
