@@ -1,0 +1,8 @@
+[Desktop Entry]
+Comment=Open Spotify
+Name=Spotify
+Terminal=false
+Exec=/usr/bin/spotify
+Type=Application
+Icon=spotify.png
+NoDisplay=false
