@@ -8,6 +8,7 @@ fi
 
 LOG_STEPS="install_log"
 INSTALL_DIR=$(pwd)
+HOMEDIR=$( getent passwd "$USER" | cut -d: -f6 )
 
 ##############
 # SETTING UP #

@@ -10,7 +10,6 @@ DOCK_ITEMS="['google-chrome.desktop', 'gmail.desktop', 'org.gnome.Nautilus.deskt
 # GNOME THEME #
 ###############
 step "Set up custom theme... "
-HOMEDIR=$( getent passwd "$USER" | cut -d: -f6 )
 
 # Downloading Wallpaper
 if [ ! -f $HOMEDIR/Images/wallpaper.jpg ]
