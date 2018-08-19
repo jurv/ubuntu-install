@@ -47,7 +47,7 @@ then
   try cp $INSTALL_DIR/modules/gnome/gmail.desktop $HOMEDIR/.local/share/applications/
 fi
 
-if [ ! -f $HOMEDIR/.local/share/icons/hicolor/128x128/apps/gmail.png ]
+if [ ! -f /usr/share/pixmaps/gmail.png ]
 then
   try sudo cp $INSTALL_DIR/modules/gnome/gmail.png /usr/share/pixmaps/
 fi
