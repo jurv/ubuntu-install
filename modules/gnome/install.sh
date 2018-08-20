@@ -65,4 +65,32 @@ fi
 # Set favourites in dock
 try gsettings set org.gnome.shell favorite-apps "$DOCK_ITEMS"
 
+####################
+# GNOME EXTENSIONS #
+####################
+
+if [ ! -d $HOMEDIR/.local/share/gnome-shell/extensions ]
+then
+    try sudo apt install -y gnome-tweak-tool gnome-shell-extensions
+
+    if [ ! -d $HOMEDIR/.local/share/gnome-shell/extensions ]
+    then
+        try sudo mkdir $HOMEDIR/.local/share/gnome-shell/extensions
+    fi
+
+    # Install Media Player Indicator extension
+    try sudo mkdir $HOMEDIR/.local/share/gnome-shell/extensions/mediaplayer@patapon.info
+    try sudo unzip $INSTALL_DIR/modules/gnome/mediaplayer@patapon.info.v63.shell-extension.zip -d $HOMEDIR/.local/share/gnome-shell/extensions/mediaplayer@patapon.info
+
+
+    try sudo chown -R $USER:$USER $HOMEDIR/.local/share/gnome-shell/extensions
+
+    # Killing the gnome-shell, it should be restarted properly
+    try killall -1 gnome-shell
+
+    # Activate the extensions
+    try gnome-shell-extension-tool -e mediaplayer@patapon.info
+    try gnome-shell-extension-tool -e workspace-indicator@gnome-shell-extensions.gcampax.github.com
+fi
+
 next
