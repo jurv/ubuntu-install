@@ -80,7 +80,7 @@ then
 
     # Install Media Player Indicator extension
     try sudo mkdir $HOMEDIR/.local/share/gnome-shell/extensions/mediaplayer@patapon.info
-    try sudo unzip $INSTALL_DIR/modules/gnome/mediaplayer@patapon.info.v63.shell-extension.zip -d $HOMEDIR/.local/share/gnome-shell/extensions/mediaplayer@patapon.info
+    try sudo unzip $INSTALL_DIR/modules/gnome/extensions/mediaplayer@patapon.info.v63.shell-extension.zip -d $HOMEDIR/.local/share/gnome-shell/extensions/mediaplayer@patapon.info
 
 
     try sudo chown -R $USER:$USER $HOMEDIR/.local/share/gnome-shell/extensions
